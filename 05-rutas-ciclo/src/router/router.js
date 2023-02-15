@@ -2,7 +2,12 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
     {
-        path: '/', 
+        path: '/',
+        redirect: '/home'
+    },
+    {
+        path: '/home',
+        name: 'home',
         component: () => import(/* webpackChunkName: "ListPage" */ '@/modules/pokemon/pages/ListPage')
     },
     {
@@ -10,17 +15,18 @@ const routes = [
         component: () => import(/* webpackChunkName: "AboutPage" */ '@/modules/pokemon/pages/AboutPage')
     },
     {
-        path: '/:id',
-        name: 'pokemon-id',
+        path: '/pokemon-id/:id',
+        name: 'pokemon-id', 
         component: () => import(/* webpackChunkName: "PokemonPage" */ '@/modules/pokemon/pages/PokemonPage'),
         props: (router) => {
             const id  = Number(router.params.id);
             return isNaN(Number(id)) ? {id: 1} : {id:  Number(id)};
-        } 
+        }
     },  
     {
         path: '/:pathNatch(.*)*',
         component: () => import(/* webpackChunkName: "NoPageFound" */ '@/modules/shared/pages/NoPageFound')
+        // redirect: '/home'
     },
 ]
 
