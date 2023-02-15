@@ -68,4 +68,18 @@ const router = createRouter({
     routes, 
 })
 
+
+//Guard Global - Sincrono
+router.beforeEach((to, from, next)=> {
+    const ramdom = Math.random()*100;
+    if(ramdom > 50) {
+        console.log('autenticado');
+        next();
+    }else{
+        console.log(ramdom, 'bloqueado por el beforeEach Guard')
+        next({name: 'pokemon-home'});
+    }
+});
+
+
 export default router;
