@@ -14,9 +14,13 @@
         data() {
             return {
                 links: [
-                    {to: '/home', name: 'pokemons'},
-                    {to: '/pokemon-id/50', name: 'Por ID'},
-                    {to: '/about', name: 'About'},
+                    {to: 'pokemon-home', name: 'pokemons'},
+                    {to: 'pokemon-id', name: 'Por ID', id:151},
+                    {to: 'pokemon-about', name: 'About'},
+
+                    {to: 'dbz-characters', name: 'Personajes'},
+                    {to: 'dbz-about', name: 'DBZ-About'},
+
                     {to: 'https//google.com', name: 'Google'}
                 ]
             }
