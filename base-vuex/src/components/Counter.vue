@@ -11,7 +11,7 @@
     <h2>mapStte: {{ count }}</h2>
     <h2>lastMutation {{ lastMutation }}</h2>
 
-    <h2>Direct getter: {{  $store.getters.squareCount }}</h2>
+    <h2>Direct getter: {{  $store.getters['counter/squareCount'] }}</h2>
 </template>
 
 <script>
@@ -21,7 +21,7 @@
     export default {
         name: "counter-components",
         computed: { 
-            ...mapState('counter', {
+            ...mapState('counter',{
                 count: 'count',
                 lastMutation: 'lastMutation',
                 isLoading: 'isLoading'
