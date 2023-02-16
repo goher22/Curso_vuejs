@@ -8,6 +8,11 @@ export default createStore({
         isLoading: false,
         lastRamdomInt: 0
     },
+    getters: {
+        squareCount(state) {
+            return state.count * state.count;
+        }
+    },
     mutations: {
         increment(state) {
             state.count++;
