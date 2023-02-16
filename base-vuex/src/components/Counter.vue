@@ -1,6 +1,6 @@
 <template>
     <h1>Counter - vuex</h1>
-    <h2>Direct acces: {{ $store.state.count }}</h2>
+    <h2>Direct acces: {{ $store.state.counter.count }}</h2>
     <h2>Computed: {{ countComputer }}</h2>
 
     <button @click="increment">+1</button>
@@ -21,24 +21,24 @@
     export default {
         name: "counter-components",
         computed: { 
-            ...mapState({
+            ...mapState('counter', {
                 count: 'count',
                 lastMutation: 'lastMutation',
                 isLoading: 'isLoading'
             }),
             countComputer() {
-                return this.$store.state.count
+                return this.$store.state.counter.count
             }
         },
         methods: {
-            ...mapActions({
+            ...mapActions('counter', {
                 randomIn: 'incrementRandomInt'
             }),
             increment() {
-                this.$store.commit('increment')               
+                this.$store.commit('counter/increment')               
             },
             incrementBy() {
-                this.$store.commit('incrementBy', 5)               
+                this.$store.commit('counter/incrementBy', 5)               
             },
         }
     }
