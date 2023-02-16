@@ -17,13 +17,19 @@ export default createStore({
             state.count+=val;
             state.lastMutation = 'incrementBy'
             state.lastRamdomInt = val;
+        },
+        setLoading(state, val){
+            state.isLoading = val;
+            state.lastMutation = 'setLoading ' + val
         }
     },
     actions: {
         async incrementRandomInt({commit}) {
+            commit('setLoading', true)
             const randomInt = await getRamdomInt();
             
             commit('incrementBy', randomInt);
+            commit('setLoading', false)
         }
     }
 });
