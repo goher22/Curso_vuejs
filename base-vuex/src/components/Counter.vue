@@ -20,7 +20,7 @@
 
     export default {
         name: "counter-components",
-        computed: {
+        computed: { 
             ...mapState({
                 count: 'count',
                 lastMutation: 'lastMutation',
