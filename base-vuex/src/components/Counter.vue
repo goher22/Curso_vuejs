@@ -5,7 +5,7 @@
 
     <button @click="increment">+1</button>
     <button @click="incrementBy">+5</button>
-    <button>Random</button>
+    <button @click="randomIn">Random</button>
 
     <h1>mapState</h1>
     <h2>mapStte: {{ count }}</h2>
@@ -14,26 +14,29 @@
 
 <script>
 
-    import { mapState } from 'vuex';
+    import { mapState, mapActions } from 'vuex';
 
     export default {
         name: "counter-components",
         computed: {
-            countComputer() {
-                return this.$store.state.count
-            },
             ...mapState({
                 count: state => state.count,
                 lastMutation: state => state.lastMutation,
-            })
+            }),
+            countComputer() {
+                return this.$store.state.count
+            }
         },
         methods: {
+            ...mapActions({
+                randomIn: 'incrementRandomInt'
+            }),
             increment() {
                 this.$store.commit('increment')               
             },
             incrementBy() {
                 this.$store.commit('incrementBy', 5)               
-            }
+            },
         }
     }
 </script>
